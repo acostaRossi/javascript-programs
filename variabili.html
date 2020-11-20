@@ -8,6 +8,9 @@
 			<p>Javascript e' un linguaggio <b>tipizzato</b>, ma non in forma esplicita.</p>
 			<p>Cio' significa che non si deve specificare il tipo della variabile durante la dichiarazione, ma verra' asseganto un tipo nel momento in cui inizializziamo la variabile.</p>
 			<p>La keyword per dichiarare una variabile e' <b>var</b></p>
+			<p>La keyword per dichiarare una costante e' <b>const</b></p>
+			<p>Premendo <b>F12</b> si apre la console degli strumenti del browser.</p>
+			<p><b>console.log</b> consente di stampare valori in console del browser.</p>
 		</div>
 		<input type="text" id="varStringa">
 		<input type="text" id="varIntera">
@@ -15,24 +18,66 @@
 		<input type="text" id="varBooelan">
 		<button onclick="mostra()">Mostra valori</button>
 		<script type="text/javascript">
+			// dichiarazione implicita (senza il var davanti) -> non e' una buona prassi utilizzare questa sintassi
+			varImplicita = "Variabile implicita senza il var davanti";
+			// dichiarazione esplicita (con il var davanti)
 			var stringa = "Hello world";
 			var numeroIntero = 15;
 			var numeroDecimale = 123.4;
 			var booleana = true;
 
+			// dichiaro una costante
+			const PIGRECO = 3.14;
+			// PIGRECO = 15; // decommentare questa riga per scatenare un errore in console
+
+			// dichiaro una funzione senza parametri
 			function mostra() {
+				console.log("step 1");
 				document.getElementById("varStringa").value = stringa;
+				console.log("step 2");
+				document.getElementById("varIntera").value = numeroIntero;
+				console.log("step 3");
+				document.getElementById("varDecimale").value = numeroDecimale;
+				console.log("step 4");
+				document.getElementById("varBooelan").value = booleana;
+				
+				// console.log serve per stampare valori in console del browser
+				console.log(stringa);
+				console.log(numeroIntero);
+				console.log(numeroDecimale);
+				console.log(booleana);
 			}
 		</script>
 		</br></br></br></br>
 		<textarea rows="30" cols="150">
+			// dichiarazione implicita (senza il var davanti) -> non e' una buona prassi utilizzare questa sintassi
+			varImplicita = "Variabile implicita senza il var davanti";
+			// dichiarazione esplicita (con il var davanti)
 			var stringa = "Hello world";
 			var numeroIntero = 15;
 			var numeroDecimale = 123.4;
 			var booleana = true;
 
+			// dichiaro una costante
+			const PIGRECO = 3.14;
+			// PIGRECO = 15; // decommentare questa riga per scatenare un errore in console
+
+			// dichiaro una funzione senza parametri
 			function mostra() {
+				console.log("step 1");
 				document.getElementById("varStringa").value = stringa;
+				console.log("step 2");
+				document.getElementById("varIntera").value = numeroIntero;
+				console.log("step 3");
+				document.getElementById("varDecimale").value = numeroDecimale;
+				console.log("step 4");
+				document.getElementById("varBooelan").value = booleana;
+				
+				// console.log serve per stampare valori in console del browser
+				console.log(stringa);
+				console.log(numeroIntero);
+				console.log(numeroDecimale);
+				console.log(booleana);
 			}
 		</textarea>
 	</body>
