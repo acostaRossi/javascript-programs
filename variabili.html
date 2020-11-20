@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>Javascript - Le variabili</title>
+	</head>
+	<body>
+		<h1>In questo esempio vediamo i tipi di variabili nel linguaggio Javascript</h1>
+		<div>
+			<p>Javascript e' un linguaggio <b>tipizzato</b>, ma non in forma esplicita.</p>
+			<p>Cio' significa che non si deve specificare il tipo della variabile durante la dichiarazione, ma verra' asseganto un tipo nel momento in cui inizializziamo la variabile.</p>
+			<p>La keyword per dichiarare una variabile e' <b>var</b></p>
+		</div>
+		<input type="text" id="varStringa">
+		<input type="text" id="varIntera">
+		<input type="text" id="varDecimale">
+		<input type="text" id="varBooelan">
+		<button onclick="mostra()">Mostra valori</button>
+		<script type="text/javascript">
+			var stringa = "Hello world";
+			var numeroIntero = 15;
+			var numeroDecimale = 123.4;
+			var booleana = true;
+
+			function mostra() {
+				document.getElementById("varStringa").value = stringa;
+			}
+		</script>
+		</br></br></br></br>
+		<textarea rows="40" cols="520">
+			var stringa = "Hello world";
+			var numeroIntero = 15;
+			var numeroDecimale = 123.4;
+			var booleana = true;
+
+			function mostra() {
+				document.getElementById("varStringa").value = stringa;
+			}
+		</textarea>
+	</body>
+</html>
