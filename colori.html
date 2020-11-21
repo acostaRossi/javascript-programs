@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Gradienti colori</title>
+	</head>
+	<body>
+		<div id="testo"><H2> testo che muta gradatamente</h2></div>
+		<script type="text/javascript">
+		// dichiaro e inizializzo le variabili -> globali
+		var rr = 128;
+		var gg = 1;
+		var bb = 1;
+		
+		// creo una nuova funzione gradiente
+		function gradiente() { //cambia colore gradatamente
+			rr = rr + 5;
+			gg = gg + 5;
+			bb = bb + 5;
+
+			if (rr > 256) {
+				rr = 128;
+				gg = 1;
+				bb= 1;
+			}
+
+			var colore = "rgb("+rr+","+ gg + "," + bb +")"; // "rgb(132, 6, 6  locale
+			// applico il nuovo colore al testo
+			document.getElementById("testo").style.color = colore;
+		}
+
+		//temporizza funzione ogni 100 millisec
+		setInterval(gradiente, 100);
+		</script>
+	</body>
+</html>
