@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Calcola tariffa soggiorno</title>
+        <script type="text/javascript">
+        function calcolaForfait() {
+
+            var form = document.getElementById("formDati");
+
+            if(form.giorni.value === "") {
+                alert("Introdurre il numero di giorni");
+
+                return;
+            }
+
+            if(isNaN(form.giorni.value)) {
+                alert("Introdurre un numero valido");
+
+                return;
+            }
+
+            var costoPerGiorno = 60;
+
+            // variabile locale
+            var totale = form.giorni.value * costoPerGiorno;
+
+            form.display.value = totale;
+        }
+        </script>
+    </head>
+    <body>
+        <h2>Calcolo tariffa forfait</h2>
+        <form id="formDati">Introdurre il n. di giorni da soggiornare:
+            <input type="text" name="giorni" size="10">
+            <input type="button" value="Tariffa forfait" name="calcola" onclick="calcolaForfait()">
+            <input type="reset" value="annulla">
+            <p>Totale: <input type= "text" name="display" size ="20"></p>
+        </form>
+    </body>
+</html>
