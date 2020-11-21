@@ -1,11 +1,14 @@
 # javascript-programs
 
+### Una guida utile
 
 https://www.html.it/guide/guida-javascript-di-base/
 
-Editor HTML/Javascript
+### Editor HTML/Javascript suggeriti
 
 https://www.sublimetext.com/
+
+https://code.visualstudio.com/
 
 ### Calcola tariffa soggiorno
 
