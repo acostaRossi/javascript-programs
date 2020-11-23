@@ -20,9 +20,13 @@ https://github.com/acostaRossi/javascript-programs/blob/main/calcola.html
 
 https://github.com/acostaRossi/javascript-programs/blob/main/colori.html
 
-### Le variabili in Javascript
+### Dichiara, modifica e mostra le variabili
 
 https://github.com/acostaRossi/javascript-programs/blob/main/variabili.html
+
+### Contatore
+
+https://github.com/acostaRossi/javascript-programs/blob/main/contatore.html
 
 ## Documentazione
 
