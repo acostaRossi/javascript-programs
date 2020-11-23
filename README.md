@@ -32,19 +32,4 @@ https://github.com/acostaRossi/javascript-programs/blob/main/contatore.html
 
 https://www.w3schools.com/jsref/
 
-L'oggetto Window
-
-https://www.w3schools.com/js/js_window.asp
-
-L'oggetto Document
-
-https://www.w3schools.com/jsref/dom_obj_document.asp
-
-L'oggetto Element
-
-https://www.w3schools.com/jsref/dom_obj_all.asp
-
-Get Element By Id
-
-https://www.w3schools.com/jsref/met_document_getelementbyid.asp
 
