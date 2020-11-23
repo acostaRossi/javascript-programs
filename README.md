@@ -1,8 +1,12 @@
 # javascript-programs
 
-## Una guida utile
+## Guide utili
 
 https://www.html.it/guide/guida-javascript-di-base/
+
+## Documentazione
+
+https://www.w3schools.com/jsref/
 
 ## Editor HTML/Javascript suggeriti
 
