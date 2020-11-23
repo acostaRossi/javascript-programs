@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>Contatore</title>
+	</head>
+	<body>
+		<!-- TESTO -->
+		<p id="testo" style="font-size:5px;">Hello Classe</p>
+		<!-- NUMERO -->
+		<p id="numero">5</p>
+		<!-- PULSANTE DECREMENTA -->
+		<button onclick="decrementa()">-</button>
+		<!-- PULSANTE INCREMENTA -->
+		<button onclick="incrementa()">+</button>
+
+		<script type="text/javascript">
+			// variabile globale
+			var contatore = 5;
+
+			function decrementa(){
+				console.log("decrementa");
+				contatore--;
+				console.log(contatore);
+				// innerHTML consente di modificare il contenuto di un tag html
+				document.getElementById("numero").innerHTML = contatore;
+				// tramite la proprieta' style e' possibile modificare lo stile dell'elemento
+				// in questo caso viene modificato il font size
+				document.getElementById("testo").style.fontSize = contatore;
+			}
+
+			function incrementa(){
+				console.log("incrementa");
+				contatore++;
+				console.log(contatore);
+				document.getElementById("numero").innerHTML = contatore;
+				document.getElementById("testo").style.fontSize = contatore;
+			}
+		</script>
+	</body>
+</html>
