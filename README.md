@@ -28,7 +28,11 @@ https://github.com/acostaRossi/javascript-programs/blob/main/variabili.html
 
 https://www.w3schools.com/jsref/
 
-L'oggetto document
+L'oggetto Window
+
+https://www.w3schools.com/js/js_window.asp
+
+L'oggetto Document
 
 https://www.w3schools.com/jsref/dom_obj_document.asp
 
