@@ -1,14 +1,16 @@
 # javascript-programs
 
-### Una guida utile
+## Una guida utile
 
 https://www.html.it/guide/guida-javascript-di-base/
 
-### Editor HTML/Javascript suggeriti
+## Editor HTML/Javascript suggeriti
 
 https://www.sublimetext.com/
 
 https://code.visualstudio.com/
+
+## Esercizi
 
 ### Calcola tariffa soggiorno
 
@@ -21,4 +23,10 @@ https://github.com/acostaRossi/javascript-programs/blob/main/colori.html
 ### Le variabili in Javascript
 
 https://github.com/acostaRossi/javascript-programs/blob/main/variabili.html
+
+## Documentazione Javascript
+
+Get Element By Id
+
+https://www.w3schools.com/jsref/met_document_getelementbyid.asp
 
