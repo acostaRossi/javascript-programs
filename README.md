@@ -4,10 +4,6 @@
 
 https://www.html.it/guide/guida-javascript-di-base/
 
-## Documentazione
-
-https://www.w3schools.com/jsref/
-
 ## Editor HTML/Javascript suggeriti
 
 https://www.sublimetext.com/
@@ -28,7 +24,9 @@ https://github.com/acostaRossi/javascript-programs/blob/main/colori.html
 
 https://github.com/acostaRossi/javascript-programs/blob/main/variabili.html
 
-## Documentazione Javascript
+## Documentazione
+
+https://www.w3schools.com/jsref/
 
 L'oggetto document
 
