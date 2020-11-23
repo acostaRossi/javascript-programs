@@ -4,6 +4,10 @@
 
 https://www.html.it/guide/guida-javascript-di-base/
 
+## Documentazione
+
+https://www.w3schools.com/jsref/
+
 ## Editor HTML/Javascript suggeriti
 
 https://www.sublimetext.com/
@@ -28,8 +32,5 @@ https://github.com/acostaRossi/javascript-programs/blob/main/variabili.html
 
 https://github.com/acostaRossi/javascript-programs/blob/main/contatore.html
 
-## Documentazione
-
-https://www.w3schools.com/jsref/
 
 
