@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+</head>
+<body bgcolor="azure">
+	<h1>Slot Machine</h1>
+	<input type="text" name="slot1" id="slot1">
+	<input type="text" name="slot2" id="slot2">
+	<input type="text" name="slot3" id="slot3">
+	<button onclick="generaNumeri()">Tenta la fortuna</button>
+	<script type="text/javascript">
+
+		var min = 1;
+		var max = 5;
+
+		function generaNumeri() {
+
+			setTimeout(generaSerie, 1000);
+			setTimeout(generaSerie, 2000);
+			setTimeout(generaSerie, 3000);
+			setTimeout(controllaNumeri, 4000);
+
+		}		
+
+		function generaSerie(){
+
+			var numeroGenerato = Math.floor(Math.random() * (max - min + 1)) + min;
+			document.getElementById("slot1").value = numeroGenerato;
+
+			numeroGenerato = Math.floor(Math.random() * (max - min + 1)) + min;
+			document.getElementById("slot2").value = numeroGenerato;
+
+			numeroGenerato = Math.floor(Math.random() * (max - min + 1)) + min;
+			document.getElementById("slot3").value = numeroGenerato;
+
+		}
+
+		function controllaNumeri() {
+
+			var slot1 = document.getElementById("slot1").value;
+			var slot2 = document.getElementById("slot2").value;
+			var slot3 = document.getElementById("slot3").value;
+
+			var conta = 0;
+
+			if(slot1 === slot2){
+				conta++;
+			}
+
+			if(slot2 === slot3){
+				conta++;
+			}
+
+			if(slot1 === slot3){
+				conta++;
+			}
+
+			if(conta === 1){
+				alert("Ambo");
+			}
+
+			if(conta === 3){
+				alert("Jackpot");
+			}
+
+			if(conta === 0){
+				alert("Hai perso ritenta !");
+			}
+
+		}
+	</script>
+</body>
+</html>
