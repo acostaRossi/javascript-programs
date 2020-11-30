@@ -60,5 +60,15 @@ Codice
 
 https://github.com/acostaRossi/javascript-programs/blob/main/contatore.html
 
+### Slot Machine
+
+Risultato
+
+https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/slot_machine.html
+
+Codice
+
+https://github.com/acostaRossi/javascript-programs/blob/main/slot_machine.html
+
 
 
