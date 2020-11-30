@@ -71,4 +71,14 @@ Codice
 https://github.com/acostaRossi/javascript-programs/blob/main/slot_machine.html
 
 
+### Ciclo for e while
+
+Risultato
+
+https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/for-and-while-loops.html
+
+Codice
+
+https://github.com/acostaRossi/javascript-programs/blob/main/for-and-while-loops.html
+
 
