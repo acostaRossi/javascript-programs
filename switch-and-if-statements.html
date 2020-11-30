@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Switch and If Statements</title>
+	<style type="text/css">
+		.container {
+			max-width: 500px;
+  			margin: auto;
+  			text-align: center;
+		}
+		img {
+			width: 100px;
+			height: 100px;
+			display: none;
+		}
+		#risultato {
+			border: 2px solid black;
+			margin-top: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+
+		function identificaLingua() {
+
+			var saluto = document.getElementById("testo").value;
+
+			var lingua = "";
+
+			var sigla = "";
+
+			// usiamo lo switch
+
+			switch(saluto) {
+			  case "ciao":
+			    lingua = "Italiano";
+			    sigla = "it";
+			    break;
+			  case "hello":
+			    lingua = "Inglese";
+			    sigla = "gb";
+			    break;
+			  case "hola":
+			  	lingua = "Spagnolo";
+			  	sigla = "es";
+			    break;
+			  default:
+			    lingua = "Lingua non riconosciuta";
+			}
+			
+			// potrei fare la stessa cosa con un if
+			/*
+			if(saluto === "ciao") {
+				lingua = "italiano";
+			}
+			else if(saluto === "hello") {
+				lingua = "inglese";
+			}
+			else if(saluto === "hola") {
+				lingua = "spagnolo";	
+			}
+			else {
+				lingua = "lingua non riconosciuta";
+			}
+			*/
+
+			document.getElementById("lingua").innerHTML = lingua;
+
+			document.getElementById("bandiera").style.display = "inline";
+
+			if(sigla !== "") {
+
+				document.getElementById("bandiera").src = "https://www.countryflags.io/" + sigla + "/flat/64.png";
+
+			}
+			else {
+
+				document.getElementById("bandiera").src = "https://media.istockphoto.com/vectors/sad-face-icon-unhappy-face-symbol-vector-id1055219634";	
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<p>Scrivi "hello", "hola" oppure "ciao" e clicca su "Identifica lingua"</p>
+		<p>Se scrivi una parola diversa da quelle consentite non verra' identificata.</p>
+		<input type="text" name="testo" id="testo">
+		<button onclick="identificaLingua()">Identifica Lingua</button>
+		<div id="risultato">
+			<p>Lingua identificata</p>
+			<p id="lingua"></p>
+			<img id="bandiera" src="">
+		</div>
+	</div>
+</body>
+</html>
