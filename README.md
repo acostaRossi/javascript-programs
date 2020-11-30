@@ -81,4 +81,12 @@ Codice
 
 https://github.com/acostaRossi/javascript-programs/blob/main/for-and-while-loops.html
 
+### Costrutti if e switch
 
+Risultato
+
+https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/switch-and-if-statements.html
+
+Codice
+
+https://github.com/acostaRossi/javascript-programs/blob/main/switch-and-if-statements.html
