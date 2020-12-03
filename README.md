@@ -95,8 +95,8 @@ https://github.com/acostaRossi/javascript-programs/blob/main/switch-and-if-state
 
 Risultato
 
-https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa..html
+https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa.html
 
 Codice
 
-https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa..html
+https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa.html
