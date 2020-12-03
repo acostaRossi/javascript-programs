@@ -90,3 +90,13 @@ https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-program
 Codice
 
 https://github.com/acostaRossi/javascript-programs/blob/main/switch-and-if-statements.html
+
+### Esempio carrello spesa
+
+Risultato
+
+https://htmlpreview.github.io/?https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa.html
+
+Codice
+
+https://github.com/acostaRossi/javascript-programs/blob/main/carrello-spesa.html
