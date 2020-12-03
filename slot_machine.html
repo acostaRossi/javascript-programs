@@ -2,13 +2,33 @@
 <html>
 <head>
 	<title>Slot Machine</title>
+	<style type="text/css">
+	.container {
+		max-width: 800px;
+		min-height: 300px;
+		margin: auto;
+		text-align: center;
+		background: #f11212;
+		padding: 20px;
+	}
+	body {
+		background-image: url(sfondo.jpg);
+	}
+	</style>
 </head>
-<body bgcolor="azure">
+<body>
+	<div class="container">
 	<h1>Slot Machine</h1>
-	<input type="text" name="slot1" id="slot1">
-	<input type="text" name="slot2" id="slot2">
-	<input type="text" name="slot3" id="slot3">
-	<button onclick="generaNumeri()">Tenta la fortuna</button>
+		<input type="text" name="slot1" id="slot1">
+		<input type="text" name="slot2" id="slot2">
+		<input type="text" name="slot3" id="slot3">
+		<button onclick="generaNumeri()">Tenta la fortuna</button>
+		<img id="imgVittoria" src="pioggia_soldi.gif" style="display:none; padding: 20px;">
+	</div>
+	<audio controls id="suono"  style="display:none;">
+	  <source src="soldiSuono.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
 	<script type="text/javascript">
 
 		var min = 1;
@@ -57,14 +77,19 @@
 			}
 
 			if(conta === 1){
+				document.getElementById("imgVittoria").style.display = "inline-block";
+				document.getElementById("suono").play();
 				alert("Ambo");
 			}
 
 			if(conta === 3){
+				document.getElementById("imgVittoria").style.display = "inline-block";
+				document.getElementById("suono").play();
 				alert("Jackpot");
 			}
 
 			if(conta === 0){
+				document.getElementById("imgVittoria").style.display = "none";
 				alert("Hai perso ritenta !");
 			}
 
