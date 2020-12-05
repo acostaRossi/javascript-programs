@@ -26,10 +26,12 @@
 			Prezzo <input type="text" name="prezzo" id="prezzoProdotto">
 			<!-- Pulsante per ricarica la pagina html -->
 			<button onclick="inserisci()">Inserisci</button>
+			<button onclick="acquista()">Acquista</button>
 
 			<br><br>
 
-			<p id="prezzoTotale">Prezzo totale:</p>
+			<p>Prezzo totale:</p>
+			<p id="prezzoTotale"></p>
 
 			<br><br>
 			<div id="carrello">
@@ -40,6 +42,10 @@
 
 		<script type="text/javascript">
 			var totale = 0;
+
+			var carrello = new Array();
+
+			var storicoAcquisti = [];
 
 			function inserisci() {
 
@@ -55,6 +61,8 @@
 					alert("Prezzo prodotto non valido");
 					return;
 				}
+
+				carrello.push(nuovoProdotto);
 				
 				var prodottiInseriti = document.getElementById("prodottiInseriti").innerHTML;
 				prodottiInseriti = prodottiInseriti + nuovoProdotto + " : " + prezzoProdotto + "<br>";
@@ -62,6 +70,53 @@
 
 				totale = totale + Number(prezzoProdotto);
 				document.getElementById("prezzoTotale").innerHTML = totale;
+			}
+
+			function acquista() {
+
+				var riepilogo = "";
+
+				for(var i=0; i<carrello.length;i++) {
+
+					riepilogo += carrello[i]; // riepilogo = riepilogo + carrello[i]
+					riepilogo += "\n";
+
+				}
+
+				var testoMesssaggio = "I prodotti che stai acquistando sono:\n";
+				testoMesssaggio += riepilogo;
+				testoMesssaggio += "\n\n";
+				testoMesssaggio += "Vuoi procedere con l'acquisto ?";
+
+				var scelta = confirm(testoMesssaggio);
+
+				if(scelta === true) {
+
+					prompt("Inserisci i dati della tua carta di credito.");
+
+					inserisciInStorico(riepilogo);
+
+					resetValori();
+
+				}
+			}
+
+			function inserisciInStorico(riepilogoProdotti) {
+
+				storicoAcquisti.push(riepilogoProdotti);
+
+			}
+
+			function resetValori() {
+
+				document.getElementById("nuovoProdotto").value = "";
+				document.getElementById("prezzoProdotto").value = "";
+
+				document.getElementById("prezzoTotale").innerHTML = "";
+				document.getElementById("prodottiInseriti").innerHTML = "";
+
+				carrello = new Array();
+
 			}
 		</script>
 	</body>
