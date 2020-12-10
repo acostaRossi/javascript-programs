@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>todo list</title>
+    </head>
+    <body>
+		<input type="text" id="attivitàin">
+		<button onclick="inserisci()">inserisci</button>
+		<p>TODO list: 
+            <p id="attivitàout"></p>
+        </p>
+       	<script type="text/javascript">
+
+        var todo = []; // crea un array vuoto
+
+        function inserisci()
+        {
+        	var attività = document.getElementById("attivitàin").value;
+
+        	todo.push(attività);
+
+        	disegnaLista();
+
+        	document.getElementById("attivitàin").value = "";
+        }
+
+        function disegnaLista() {
+
+            var html = "";
+
+        	for(var i=0; i<todo.length; i++) {
+
+        		html += (i + 1);
+        		html += "-";
+        		html += todo[i];
+        		html += "&nbsp<button onclick='elimina(" + i +")'>-</button>";
+        		html += "<br>";
+
+        	}
+
+        	 document.getElementById("attivitàout").innerHTML = html;
+        }
+
+        function elimina(index) {
+
+        	todo.splice(index, 1);
+
+        	disegnaLista();
+
+        }
+        </script>
+    </body>
+</html>
