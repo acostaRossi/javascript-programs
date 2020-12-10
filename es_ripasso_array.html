@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Esercizio di ripasso su array</title>
+</head>
+<body>
+
+	<p>Stabilire un vettore di 13 elementi, dove si scriverà in ogni cella il valore 0 quando l’indice della sua
+posizione sarà 3 e un multiplo di 3, scriverà 1 in tutti gli altri casi.</p>
+
+	<script type="text/javascript">
+
+		/*
+
+		// SOLUZIONE 1
+
+		var vettore = new Array();
+
+		for(var index=0; index<15; index++) {
+
+			if(index % 3 === 0 && index !== 0) {
+
+				 vettore.push(0); // fa crescere l ARRAY
+
+			}
+
+			else {
+
+				vettore.push(1);
+
+			}
+			
+		}
+		*/
+
+		// SOLUZIONE 2
+
+		var vettore = new Array();
+
+		for(var index=0; index<15; index++) {
+
+			if(index % 3 === 0 && index !== 0) {
+
+				 vettore[index] = 0; // fa crescere l ARRAY
+
+			}
+
+			else {
+
+				vettore[index] = 1;
+
+			}
+			
+		}
+
+
+		/*
+
+		// SOLUZIONE 3
+
+		var vettore = new Array(15);
+
+		for(var index=0; index<vettore.length; index++) {
+
+			if(index % 3 === 0 && index !== 0) {
+
+				 vettore[index] = 0; // vado ad inserire il valore direttamente nella cella dell ARRAY
+
+			}
+
+			else {
+
+				vettore[index] = 1;
+
+			}
+			
+		}
+		*/
+
+		console.log(vettore);
+		
+	</script>
+</body>
+</html>
