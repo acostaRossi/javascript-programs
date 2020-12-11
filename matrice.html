@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matrice</title>
+	<style type="text/css">
+		.container {
+			max-width: 800px;
+			min-height: 300px;
+			margin: auto;
+			text-align: center;
+			background: grey;
+			padding: 20px;
+		}
+		table, th, td {
+			border: 1px solid white;
+			color: white;
+			font-size: 40px;
+		}
+		table {
+			display: inline-block;
+		}
+		.titolo {
+			font-size: 50px;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<p class="titolo">Matrice</p>
+
+		<table>
+			<tbody id="matrice">
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		var matrice = [["A1", "A2","A3"], ["B1", "B2","B3"], ["C1", "C2","C3"]];
+
+		for(var i=0; i<matrice.length; i++) {
+
+			var riga = document.createElement("tr");
+
+			console.log("i = " + i);
+
+			for(var y=0; y<matrice[i].length; y++) {
+
+				var colonna = document.createElement("td");
+
+				colonna.innerHTML = matrice[i][y];
+
+				riga.appendChild(colonna);
+
+				document.getElementById("matrice").appendChild(riga);
+
+				console.log("y = " + y);
+
+				console.log(matrice[i][y]);
+
+			}
+		}
+	</script>
+</body>
+</html>
