@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>ASSISTENTE GUIDO</title>
+		<style type="text/css">
+			#ïmmagine {
+				position: absolute;
+    			right: 20px;
+    		}
+    		.textarea {
+    			width: 700px;
+    			background: azure;
+    			height: 300px;
+ 				overflow: auto;
+    		}
+    		.domanda{
+    			text-align: left;
+    			margin-left: 80px;
+    		}
+    		.risposta{
+    			text-align: right;
+    			margin-right: 80px;
+    		}
+		</style>
+	</head>
+	<body background="sfondo.jpg">
+		<br><br>
+		<p align="center"><font color="#0099ff" size="7">⚞ PARLA CON DIEGO ⚟</font></p></H1>
+		<br><br><br><br>
+	
+		<img id="ïmmagine" src="DC.png">
+
+		<input type="text" size=100% onkeypress="tastoPremuto(event);" id="chat">
+
+		<div class="textarea" id="chat-out"> </div>
+
+		<script type="text/javascript">
+		function risposta(ingresso) {
+
+			var risposteCiao = ["-Heilà amore", "Va male", "Tutto bene", "Alla grande"];
+
+		    var ris = "";
+		    switch (ingresso){
+		        case "ciao":
+		        	var indice = Math.round(Math.random() * (risposteCiao.length - 1));
+		            ris = risposteCiao[indice];
+		            break;
+		        case "come va?":
+		            ris="-Tutto bene, te amorino?";
+		            break;
+		        case "tutto bene":
+		            ris="-Sono molto contenta allora";
+		            break;
+		        default:
+		            ris = "-mamma che sexy che sei";
+		    }
+
+		    voce(ris);
+
+		    var pChatIn = document.createElement("p"); // <p></p>
+		    pChatIn.innerHTML = ris;
+		    pChatIn.className = "risposta";
+		    document.getElementById("chat-out").appendChild(pChatIn);
+	    }
+
+		function tastoPremuto(event){
+			// quando si preme invio
+			if (event.keyCode === 13) {
+
+			    var i = i + 1;
+			    var chatin = document.getElementById("chat").value;
+
+			    var pChatIn = document.createElement("p"); // <p></p>
+			    pChatIn.className = "domanda";
+			    pChatIn.innerHTML = chatin;
+			    document.getElementById("chat-out").appendChild(pChatIn);
+
+			    risposta(chatin);
+			    
+			} // if
+		}
+
+
+        function voce(cosaDire){
+            const speech = new SpeechSynthesisUtterance();
+            speech.text= cosaDire;
+            speech.volume= 1;
+            speech.rate= 2;
+            speech.pitch= 1;
+            window.speechSynthesis.speak(speech)
+        }
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <style type="text/css">
+        .textarea {
+            margin: auto;
+            text-align: center;
+            padding: 30px;
+        }
+</style>
+</head>
+<body>
+    <p align="center"><textarea class="textarea" type=text name="cosa" rows="40" cols="200" id="u"> </textarea></p>
+    <p align="center"><input type="text" size=100% onkeypress="tastoPremuto(event);" id="chat"></p>
+<script type="text/javascript">
+        function tastoPremuto(event){
+            
+    if (event.keyCode === 13){
+        var i=i + 1
+        var chatin= document.getElementById("chat").value;
+        var chatout= document.getElementById("u").innerHTML;
+         chatout= chatout + chatin + "\n" ;
+        document.getElementById("u").innerHTML=chatout;
+        document.getElementById("u").style="text-align:left;";
+        risposta();
+        function risposta(){
+        var risposta= "";
+        switch (chatin){
+            case "ciao":
+                risposta="-Heilà amore";
+                break;
+            case "come va?":
+                risposta="-Tutto bene, te amorino?";
+                break;
+            case "tutto bene":
+                risposta="-Sono molto contenta allora";
+                break;
+            default:
+                risposta = "-mamma che sexy che sei";
+        }
+        
+         document.getElementById("u").style="text-align:left;";
+        chatout= chatout + "\n" + risposta + "\n";
+        document.getElementById("u").innerHTML=chatout;
+        
+        }
+       
+
+   
+    }
+}
+
+</script>
+</body>
+</html>
