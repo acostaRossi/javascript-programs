@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gioco del tris</title>
+</head>
+<body>
+	<button onclick="copiaValoriInMatrice()">Verifica</button>
+
+	<table>
+		<tr>
+			<td><input type="text" id="00"></td>
+			<td><input type="text" id="01"></td>
+			<td><input type="text" id="02"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="10"></td>
+			<td><input type="text" id="11"></td>
+			<td><input type="text" id="12"></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="20"></td>
+			<td><input type="text" id="21"></td>
+			<td><input type="text" id="22"></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+
+		var matrice = [
+			[-1,-1,-1],
+			[-1,-1,-1],
+			[-1,-1,-1],
+		];
+
+		function copiaValoriInMatrice() {
+
+			for(var x=0; x<3; x++) {
+
+				for(var y=0; y<3; y++) {
+
+					var valoreDellaCella = document.getElementById(x + "" + y).value;
+
+					matrice[x][y] = valoreDellaCella;
+
+				}
+
+			}
+
+			controllaTris();
+
+		}
+
+		function controllaTris() {
+			 
+			 // controllare se ci sono tris in colonna, in riga o in diagonale
+
+			 var trisTrovato = false;
+
+			 // verifica tris orizzontale
+
+			 if(matrice[0][0] !== "" && matrice[0][1]  !== "" && matrice[0][2]  !== "") {
+
+				 if(matrice[0][0] === matrice[0][1] && matrice[0][1] === matrice[0][2]) {
+
+				 	trisTrovato = true;
+				 	
+				 }
+			 }
+
+			if(matrice[1][0] !== "" && matrice[1][1]  !== "" && matrice[1][2]  !== "") {
+
+				 if(matrice[1][0] === matrice[1][1] && matrice[1][1] === matrice[1][2]) {
+
+				 	trisTrovato = true;
+				 }
+			}
+
+			if(matrice[2][0] !== "" && matrice[2][1]  !== "" && matrice[2][2]  !== "") {
+				 
+			 if(matrice[2][0] === matrice[2][1] && matrice[2][1] === matrice[2][2]) {
+
+			 	trisTrovato = true;
+			 }
+			}
+
+			// verifica tris verticale
+
+			if(matrice[0][0] !== "" && matrice[1][0]  !== "" && matrice[2][0]  !== "") {
+
+				 if(matrice[0][0] === matrice[1][0] && matrice[1][0] === matrice[2][0]) {
+
+				 	trisTrovato = true;
+				 	
+				 }
+			 }
+
+			if(matrice[0][1] !== "" && matrice[1][1]  !== "" && matrice[2][1]  !== "") {
+
+				 if(matrice[0][1] === matrice[1][1] && matrice[1][1] === matrice[2][1]) {
+
+				 	trisTrovato = true;
+				 }
+			}
+
+			if(matrice[0][2] !== "" && matrice[1][2]  !== "" && matrice[2][2]  !== "") {
+				 
+			 if(matrice[0][2] === matrice[1][2] && matrice[1][2] === matrice[2][2]) {
+
+			 	trisTrovato = true;
+			 }
+			}
+
+
+			// verifica tris diagonale
+
+			 if(trisTrovato) {
+			 	alert("tris");
+			 }
+
+		}
+
+
+
+	</script>
+
+</body>
+</html>
