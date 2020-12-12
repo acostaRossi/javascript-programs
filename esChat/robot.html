@@ -5,6 +5,7 @@
 			#ïmmagine {
 				position: absolute;
     			right: 20px;
+    			top: 40px;
     		}
     		.textarea {
     			width: 700px;
@@ -19,6 +20,16 @@
     		.risposta{
     			text-align: right;
     			margin-right: 80px;
+
+    		}
+    		input {
+    			position: absolute;
+    			left: 407px;
+    			top: 173px;
+    		}
+    		.textarea {
+    			position: absolute;
+    			left: 400px;
     		}
 		</style>
 	</head>
@@ -35,6 +46,8 @@
 
 		<script type="text/javascript">
 		function risposta(ingresso) {
+
+			document.getElementById("pensando").remove();
 
 			var risposteCiao = ["-Heilà amore", "Va male", "Tutto bene", "Alla grande"];
 
@@ -74,11 +87,16 @@
 			    pChatIn.innerHTML = chatin;
 			    document.getElementById("chat-out").appendChild(pChatIn);
 
-			    risposta(chatin);
+			    var pStoPensando = document.createElement("p"); // <p></p>
+			    pStoPensando.innerHTML = "Sto pensando";
+			    pStoPensando.id = "pensando";
+			    pStoPensando.className = "risposta";
+			    document.getElementById("chat-out").appendChild(pStoPensando);
+
+			    setTimeout(risposta, 2000, chatin);
 			    
 			} // if
 		}
-
 
         function voce(cosaDire){
             const speech = new SpeechSynthesisUtterance();
@@ -88,7 +106,6 @@
             speech.pitch= 1;
             window.speechSynthesis.speak(speech)
         }
-
 		</script>
 	</body>
 </html>
