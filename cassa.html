@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cassa</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		var totale = 0;
+
+		var daPagare = 0;
+
+		daPagare = Number(prompt("Digita l'importo da pagare (> 0 e <= 100)"));
+
+		while(daPagare <= 0 || daPagare > 100) {
+
+			daPagare = Number(prompt("Digita l'importo da pagare (> 0 e <= 100)"));
+
+		}
+
+		// importo corretto posso proseguire
+
+		console.log(daPagare);
+
+		var moneta = 0;
+
+		moneta = Number(prompt("Inserisci una moneta o banconota valida"));
+
+		while(moneta !== 0.10  && 
+			moneta !== 0.20  &&  moneta !== 0.50  &&
+			moneta !== 1  &&  moneta !== 2  &&
+			moneta !== 5  &&  moneta !== 10  &&
+			moneta !== 20  &&  moneta !== 50  &&
+			moneta !== 100) {
+
+			moneta = Number(prompt("Inserisci una moneta o banconota valida"));
+
+		}
+
+		totale = totale + moneta;
+
+		while(totale < daPagare) {
+
+			moneta = 0;
+
+			while(moneta !== 0.10  && 
+				moneta !== 0.20  &&  moneta !== 0.50  &&
+				moneta !== 1  &&  moneta !== 2  &&
+				moneta !== 5  &&  moneta !== 10  &&
+				moneta !== 20  &&  moneta !== 50  &&
+				moneta !== 100) {
+
+				moneta = Number(prompt("Inserisci una moneta o banconota"));
+
+			}
+
+			totale = totale + moneta;
+
+		}
+
+		var resto = totale - daPagare;
+
+		resto = Math.round(resto * 100) / 100;
+
+		console.log(resto);
+
+		alert("Tieni il resto: " + resto);
+		
+	</script>
+
+</body>
+</html>
