@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selettori</title>
+</head>
+<body>
+
+	<p id="paragrafo1" class="par">Paragrafo 1</p>
+	<p id="paragrafo2" class="par">Paragrafo 2</p>
+	<p id="paragrafo3" class="par">Paragrafo 3</p>
+	<p id="paragrafo4" class="par">Paragrafo 4</p>
+	<p id="paragrafo5" class="par">Paragrafo 5</p>
+
+	<div class="contenitore">Contenitore 1</div>
+	<div class="contenitore">Contenitore 2</div>
+	<p class="contenitore">Contenitore 3</p>
+
+	<button onclick="cambiaColoreDeiPar()">Cambia colore degli elementi con classe = par</button>
+
+	<button onclick="cambiaColoreDeiContenitore()">Cambia colore degli elementi con classe = contenitore</button>
+
+	<button onclick="cambiaColoreDeiDIV()">Cambia colore degli elementi con tag = DIV</button>
+
+	<button onclick="cambiaColoreDiParagrafo5()">Cambia colore dell'elemento con id = paragrafo5</button>
+
+	<script type="text/javascript">
+
+		function cambiaColoreDeiPar() {
+
+			var elementiConClassePar = document.getElementsByClassName("par"); // array
+
+			for(var i=0; i<elementiConClassePar.length; i++){
+				elementiConClassePar[i].style.color = "red";
+			}
+		}
+
+		function cambiaColoreDeiContenitore() {
+
+			var elementiConClasseContenitore = document.getElementsByClassName("contenitore"); // array
+
+			for(var i=0; i<elementiConClasseContenitore.length; i++){
+				elementiConClasseContenitore[i].style.color = "blue";
+			}
+		}
+
+		function cambiaColoreDeiDIV() {
+
+			var elementiConTagDIV = document.getElementsByTagName("div"); // array
+
+			for(var i=0; i<elementiConTagDIV.length; i++){
+				elementiConTagDIV[i].style.color = "pink";
+			}
+		}
+
+		function cambiaColoreDiParagrafo5() {
+			document.getElementById("paragrafo5").style.color = "yellow";
+		}
+	</script>
+</body>
+</html>
