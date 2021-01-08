@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selection sort</title>
+	<style type="text/css">
+	html {
+		height: 100%;
+	}
+	body {
+		min-height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.container {
+		margin: auto;
+		text-align: center;
+		border: none;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #2851A6 url("http://i.stack.imgur.com/spmUM.gif") left repeat-x;
+		background-size: auto;
+		background-position: bottom;
+		color: white;
+	}
+	#block-container {
+		width: 100%;
+		height: 200px;
+		margin-top: 50px;
+		position: absolute;
+    	left: 500px;
+	}
+	.block {
+		position: absolute;
+		background: red;
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		border: 2px solid white;
+		margin-right: 5px;
+		text-align: center;
+		color: white;
+	}
+	</style>
+	<script src="velocity.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<p class="titolo">Selection sort</p>
+		<div id="block-container"></div>
+		<button onclick="generaVettore()">Genera vettore</button>
+		<button onclick="ordina()">Ordina</button>
+	</div>
+	<script type="text/javascript">
+
+		var vettore = [];
+
+		function generaVettore() {
+			vettore = [];
+
+			var numeroBlocchi = 15;
+
+			for(var i=0; i<numeroBlocchi; i++) {
+
+				var numero = generaNumero(1, 50);
+
+				while(vettore.indexOf(numero) >= 0) {
+					numero = generaNumero(1, 50);
+				}
+
+				vettore.push(numero);
+			}
+
+			vettore[0] = 15;
+			vettore[9] = 15;
+
+			disegnaBlocchi();
+		}
+
+		function disegnaBlocchi() {
+
+			document.getElementById("block-container").innerHTML = "";
+
+			for(var i=0; i<vettore.length; i++) {				
+				var input = document.createElement("input");
+				input.className = 'block';
+				input.type = "text";
+				input.setAttribute("idx", vettore[i]);
+				input.value = vettore[i];
+				input.style.left = (i * 60) + "px";
+				document.getElementById("block-container").appendChild(input);
+			}
+		}
+
+		function selectionSort() {
+
+			// [13, 2, 7, 6, 3]
+
+			for(var i=0; i<vettore.length; i++) {
+
+				console.log("i = " + i);
+
+				var idxMin = i;
+
+				// cerco il numeropiu' piccolo a destra del numero in posizione i
+
+				for(var j=i+1; j<vettore.length; j++) {
+
+					console.log("             j = " + j);
+
+					if(vettore[j] < vettore[idxMin]) {
+
+						idxMin = j;
+
+					}
+
+				}
+
+				// solo se ho trovato un valore minimo a destra
+				// effettuo lo swap
+
+				if(idxMin !== i) {
+
+					// swap degli elementi
+
+					var tmp = vettore[i];
+					vettore[i] = vettore[idxMin];
+					vettore[idxMin] = tmp;
+				}
+				
+			}
+
+			console.log(vettore);
+			
+		}
+
+		function ordina() {
+			vettore = selectionSort(vettore);
+		}
+
+		function generaNumero(min, max) {
+			return Math.round(Math.random() * (max - min) + min);
+		}
+	</script>
+</body>
+</html>
