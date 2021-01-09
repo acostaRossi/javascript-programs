@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ingrandisci Div</title>
+	<style type="text/css">
+		#div1 {
+			width: 200px;
+			height: 200px;
+			background: orange;
+		}
+		#div2 {
+			width: 200px;
+			height: 200px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="div1">DIV 1</div>
+	<div id="div2">DIV 2</div>
+
+	<script type="text/javascript">
+		let div1 = document.getElementById("div1");
+
+		// This handler will be executed only once when the cursor
+		// moves over the unordered list
+		div1.addEventListener("mouseenter", function( event ) {
+		  // highlight the mouseenter target
+
+		  var bg = div1.style.background;
+
+		  div1.style.background = "red";
+
+		  var width = div1.style.width;
+
+		  div1.style.width = "600px";
+
+		  // reset the color after a short delay
+		  setTimeout(function() {
+		    div1.style.background = bg;
+		    div1.style.width = width;
+		  }, 500);
+		}, false);
+	</script>
+
+</body>
+</html>
