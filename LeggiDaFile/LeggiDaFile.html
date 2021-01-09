@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Leggi da file</title>
+		<style type="text/css">
+			.container {
+				max-width: 500px;
+	  			margin: auto;
+	  			text-align: center;
+	  			background: #f667ff;
+	  			padding: 100px;
+			}
+			button {
+				margin-top: 30px;
+			}
+			#carrello {
+				background: #ffd4f2;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Carica e Leggi file di testo<br>Cerca e Conta la parola inserita</h1>
+			<input type="file" id="file-input">
+			<br>
+			<button id="read-button" onclick="leggiFile()">Leggi File</button>
+			<br>
+			<button id="read-button" onclick="scriviFile()">Scrivi File</button>
+			<br>
+			Digita la parola da contare:
+			<input type="text" id="parolaDaContare">
+			<button onclick="cerca()">Cerca</button>
+			<br>
+			<p id="file-contents"></p>
+		</div>
+
+		<script type="text/javascript">
+		/*
+		var testo = "Quel ramo del lago di Como, che volge a mezzogiorno, tra due catene non interrotte di monti, tutto a seni e a golfi, a seconda dello sporgere e del rientrare di quelli, vien, quasi a un tratto, a ristringersi, e a prender corso e figura di fiume, tra un promontorio a destra, e un'ampia costiera dall'altra parte; e il ponte, che ivi congiunge le due rive, par che renda ancor più sensibile all'occhio questa trasformazione, e segni il punto in cui il lago cessa, e l'Adda rincomincia, per ripigliar poi nome di lago dove le rive, allontanandosi di nuovo, lascian l'acqua distendersi e rallentarsi in nuovi golfi e in nuovi seni. La costiera, formata dal deposito di tre grossi torrenti, scende appoggiata a due monti contigui, l'uno detto di san Martino, l'altro, con voce lombarda, il Resegone, dai molti suoi cocuzzoli in fila, che in vero lo fanno somigliare a una sega: talché non è chi, al primo vederlo, purché sia di fronte, come per esempio di su le mura di Milano che guardano a settentrione, non lo discerna tosto";
+
+		var parole = testo.split(" ");
+
+		for(var i=0; i<parole.length; i++) {
+			if(parole[i] === "lago") {
+				parole[i] = "Forza Milan";
+			}
+		}
+
+		var nuovoTesto = "";
+
+		for(var i=0; i<parole.length; i++) {
+			nuovoTesto = nuovoTesto + " " + parole[i];
+		}
+
+		alert(nuovoTesto);
+		*/
+
+		//alert(parole.length + " parole");
+
+		var testo = "";
+
+		function leggiFile() {
+			var file = document.getElementById("file-input").files[0];
+			var reader = new FileReader();
+			reader.addEventListener('load', function(e) {
+
+				// il file e' stato letto
+
+	    		testo = e.target.result; // recupero il contenuto del file
+
+	    		document.getElementById("file-contents").textContent = testo;
+			});
+			reader.readAsText(file);
+		};
+
+		function cerca() {
+
+			var vettoreParole = testo.split(" ");
+
+			var testoDaCercare = document.getElementById("parolaDaContare").value;
+
+			var conta = 0;
+
+			for(var i=0; i<vettoreParole.length; i++) {
+
+				var parolaDelTesto = vettoreParole[i].toLowerCase();
+				parolaDelTesto = parolaDelTesto.replace(",", "");
+				parolaDelTesto = parolaDelTesto.replace(";", "");
+				parolaDelTesto = parolaDelTesto.replace(";", "");
+				parolaDelTesto = parolaDelTesto.replace("!", "");
+				parolaDelTesto = parolaDelTesto.replace("?", "");
+
+				if(testoDaCercare.toLowerCase() === parolaDelTesto) {
+					conta++;
+				}
+			}
+
+			alert("La parola " + testoDaCercare + " e' stata trovata " + conta + " volte");
+		}
+
+		function scriviFile() {
+			// nome del file
+			var filename = "readme.txt";
+			// testo da inserire nel file
+			var text = "Text of the file goes here.";
+			// creazione oggetto Blob
+			var blob = new Blob([text], {type:'text/plain'});
+			// crea un link invisibile
+			var link = document.createElement("a");
+			link.download = filename;
+			link.href = window.URL.createObjectURL(blob);
+			link.style.display = "none";
+			document.body.appendChild(link);
+			// trigger (scateno) il click dell'utente
+			link.click()
+		}
+		</script>
+
+	</body>
+</html>
