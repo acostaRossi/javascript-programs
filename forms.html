@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form e controlli</title>
+	<style type="text/css">
+		html {
+			height: 100%;
+		}
+		body {
+			min-height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			margin: auto;
+			text-align: center;
+			border: none;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #2851A6 url("http://i.stack.imgur.com/spmUM.gif") left repeat-x;
+			background-size: auto;
+			background-position: bottom;
+			color: white;
+		}
+		.titolo {
+			font-size: 50px;
+		}
+		input {
+			margin: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p class="titolo">Form e controlli</p>
+
+		<form action="/action_page.php" method="get">
+
+			<!-- INPUT DI TESTO -->
+
+			Input di testo:
+
+			<input type="text" name="inputDiTesto" id="input1">
+
+			</br>
+
+			<!-- INPUT DI TESTO -->
+
+			Input di numero:
+
+			<input type="number" name="inputDiNumero" id="input2">
+
+			</br>
+
+			<!-- INPUT DI EMAIL -->
+
+			Input di email:
+
+			<input type="email" name="inputDiEmail" id="input3">
+
+			</br>
+
+			<!-- INPUT CHECKBOX -->
+
+			Input checkbox:
+
+			<input type="checkbox" name="inputCheckbox" id="input4">
+
+			</br>
+
+			<!-- INPUT RADIO -->
+
+			Input radio:
+
+			Italia <input type="radio" name="nazione" value="Italia">
+			Germania <input type="radio" name="nazione" value="Germania">
+			Repubblica Domenicana <input type="radio" name="nazione" value="Repubblica Domenicana">
+			Francia <input type="radio" name="nazione" value="Francia">
+
+			</br>
+
+			<input type="hidden" name="inputHidden">
+
+			</br>
+
+			<input type="file" id="inputFile">
+
+		</form>
+
+		<input type="button" name="bottone" value="Cliccami e guarda la console" onclick="dammiValori()">
+	</div>
+
+	<script type="text/javascript">
+
+		function dammiValori() {
+
+			var input1 = document.getElementById("input1").value;
+
+			console.log("Input 1 vale: " + input1);
+			
+			var input2 = document.getElementById("input2").value;
+
+			console.log("Input 2 vale: " + input2);
+
+			var input3 = document.getElementById("input3").value;
+
+			console.log("Input 3 vale: " + input3);
+
+			// checkbox
+
+			var input4 = document.getElementById("input4").checked;
+
+			console.log("Input 4 vale: " + input4);
+
+			// radio
+
+			var input5 = "";
+
+			var radio = document.getElementsByName("nazione");
+
+			for(var i=0; i<radio.length; i++) {
+				if(radio[i].checked) {
+					input5 = radio[i].value;
+					break;
+				}
+			}
+
+			console.log("Input 5 vale: " + input5);
+		}
+		
+	</script>
+
+</body>
+</html>
