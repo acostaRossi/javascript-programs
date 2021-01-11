@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ordinamenti a confronto</title>
+	<style type="text/css">
+		html {
+			height: 100%;
+		}
+		body {
+			min-height: 100%;
+			margin: 0;
+			padding: 0;
+			background-color: #000;
+		}
+		.titolo {
+			font-size: 50px;
+		}
+		.container {
+			margin: auto;
+			text-align: center;
+			border: none;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #2851A6 url("http://i.stack.imgur.com/spmUM.gif") left repeat-x;
+			background-size: auto;
+			background-position: bottom;
+			color: white;
+		}
+		#block-container {
+			height: 200px;
+			margin-top: 50px;
+			position: absolute;
+	    	left: 435px;
+	    	display: flex;
+	    	flex-wrap: wrap;
+	    	max-width: 650px;
+	    	justify-content: center;
+		}
+		.block {
+			background: red;
+			width: 50px;
+			height: 50px;
+			border: 2px solid white;
+			margin-right: 5px;
+			text-align: center;
+			color: white;
+			background: #346cd3; 
+			border-radius: 10px;
+		}
+		.orderBlockContainer {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+		.orderBlock {
+			margin-right: 50px;
+			background: #c60a8c;
+	    	padding: 20px;
+	    	border-radius: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p class="titolo">Ordinamento a confronto</p>
+		<p>Quanti valori ?</p>
+		<select id="block-select">
+			<option value="5">5</option>
+			<option value="10" selected>10</option>
+			<option value="100">100</option>
+			<option value="200">200</option>
+			<option value="500">500</option>
+		</select>
+		<button onclick="ordina()" id="btnOrdina">Ordina</button>
+		<div class="orderBlockContainer">
+			<div class="orderBlock">
+				<p>Selection Sort: </p>
+				<p id="selectionSortResult"></p>
+			</div>
+			<div class="orderBlock">
+				<p>Bubble Sort: </p>
+				<p id="bubbleSortResult"></p>
+			</div>
+		</div>
+		<div id="block-container"></div>
+	</div>
+	<script type="text/javascript">
+
+		var vettore = [];
+
+		function generaVettore() {
+
+			document.getElementById("btnOrdina").disabled = false;
+
+			vettore = [];
+
+			var numeroBlocchi = document.getElementById("block-select").value;
+
+			for(var i=0; i<numeroBlocchi; i++) {
+				vettore.push(i);
+			}
+
+			shuffle(vettore);
+
+			disegnaBlocchi();
+		}
+
+		/*
+			Mischia i valori del vettore
+		*/
+		function shuffle(array) {
+			var currentIndex = array.length, temporaryValue, randomIndex;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+
+		function disegnaBlocchi() {
+
+			document.getElementById("block-container").innerHTML = "";
+
+			for(var i=0; i<vettore.length; i++) {				
+				var input = document.createElement("input");
+				input.className = 'block';
+				input.type = "text";
+				input.setAttribute("idx", vettore[i]);
+				input.value = vettore[i];
+				document.getElementById("block-container").appendChild(input);
+			}
+		}
+
+		var confronti = 0;
+
+		function bubbleSort() {
+
+			var vettoreCopia = vettore.slice();
+
+			confronti = 0;
+
+		    var swapp;
+
+		    var n = vettoreCopia.length - 1;
+
+		    do {
+		        swapp = false;
+
+		        for (var i=0; i < n; i++)
+		        {
+		        	confronti++;
+
+		            if (vettoreCopia[i] > vettoreCopia[i+1])
+		            {
+		            	// swap
+
+		               var temp = vettoreCopia[i];
+		               vettoreCopia[i] = vettoreCopia[i+1];
+		               vettoreCopia[i+1] = temp;
+
+		               // ho trovato almeno un elemento 2 elementi da swappare ?
+
+		               swapp = true;
+		            }
+		        }
+
+		        n--;
+		        
+		    } while (swapp);
+		}
+
+		function selectionSort() {
+
+			var vettoreCopia = vettore.slice();
+
+			confronti = 0;
+
+			// [13, 2, 7, 6, 3]
+
+			for(var i=0; i<vettoreCopia.length; i++) {
+
+				var idxMin = i;
+
+				// cerco il numeropiu' piccolo a destra del numero in posizione i
+
+				for(var j=i+1; j<vettoreCopia.length; j++) {
+
+					confronti++;
+
+					if(vettoreCopia[j] < vettoreCopia[idxMin]) {
+
+						idxMin = j;
+
+					}
+				}
+
+				// solo se ho trovato un valore minimo a destra
+				// effettuo lo swap
+
+				if(idxMin !== i) {
+
+					// swap degli elementi
+
+					var tmp = vettoreCopia[i];
+					vettoreCopia[i] = vettoreCopia[idxMin];
+					vettoreCopia[idxMin] = tmp;
+				}
+			}
+		}
+
+		function ordina() {
+
+			bubbleSort();
+
+			document.getElementById("bubbleSortResult").innerHTML = "Confronti: " + confronti;
+
+			selectionSort();
+
+			document.getElementById("selectionSortResult").innerHTML = "Confronti: " + confronti;
+		}
+
+		function generaEOrdina() {
+
+			generaVettore();
+
+			ordina();
+		}
+
+		document.getElementById("block-select").addEventListener("change", generaEOrdina);
+
+		function generaNumero(min, max) {
+			return Math.round(Math.random() * (max - min) + min);
+		}
+
+		generaEOrdina();
+	</script>
+
+</body>
+</html>
