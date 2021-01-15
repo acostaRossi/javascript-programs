@@ -25,10 +25,27 @@
 		  }
 		}
 	</style>
+	<script type="text/javascript">
+
+		function controllaDimensioneSchermo() {
+
+			var x = window.matchMedia("(max-width: 600px)");
+
+			console.log(x);
+
+			if(x.matches===true){
+				document.getElementById("tipoSchermo").innerHTML = "Schermo piccolo < 600px";
+			}
+			else{
+				document.getElementById("tipoSchermo").innerHTML = "Schermo grande > 600px";
+			}
+		}
+	</script>
 </head>
-<body>
+<body onresize="controllaDimensioneSchermo()" onload="controllaDimensioneSchermo()">
 
 	<h1>Prova a ridimensionare la pagine</h1>
-	
+	<p id="tipoSchermo"></p>
+
 </body>
 </html>
