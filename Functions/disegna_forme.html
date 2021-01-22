@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trova gli errori</title>
+	<style type="text/css">
+		.container {
+			max-width: 70%;
+			min-height: 100%;
+			height: 600px;
+			overflow: auto;
+  			margin: auto;
+  			padding: 50px;
+  			text-align: center;
+  			background: #f667ff;
+  			position: relative;
+		}
+	</style>
+</head>
+<body onclick="disegna()">
+
+	<div class="container" id="main"></div>
+
+	<script type="text/javascript">
+
+		/*
+			Genera un colore a caso
+		*/
+		function generaColore() {
+
+			var letters = '0123456789ABCDEF';
+			var color = '#';
+			for (var y = 0; y < 6; y++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+
+			return color;
+		}
+
+		function generanumeroCasuale(minimo, massimo) {
+
+			return Math.round(Math.random() * (massimo - minimo) + minimo);
+		}
+
+		function disegnaRettangolo(massimo, minimo) {
+
+			var newDiv = document.createElement("div");
+			newDiv.style.width = generanumeroCasuale(minimo, massimo) + "px";
+			newDiv.style.height = generanumeroCasuale(minimo, massimo) + "px";
+
+			// genera colore
+
+			newDiv.style.background = generaColore();
+
+			// genera colore
+
+			newDiv.style.color = generaColore();
+
+			newDiv.style.position = "absolute";
+			newDiv.style.left = generanumeroCasuale(0, 950) + "px";
+			newDiv.style.top = generanumeroCasuale(0, 480) + "px";
+			newDiv.style.padding = "10px";
+			document.getElementById("main").appendChild(newDiv);
+		}
+
+		function disegnaQuadrato(massimo, minimo) {
+
+			var newDiv = document.createElement("div");
+			newDiv.style.width = generanumeroCasuale(minimo, massimo) + "px";
+			newDiv.style.height = generanumeroCasuale(minimo, massimo) + "px";
+			
+			// genera colore
+
+			newDiv.style.background = generaColore();
+
+			// genera colore
+
+			newDiv.style.color = generaColore();
+
+			newDiv.style.position = "absolute";
+			newDiv.style.left = generanumeroCasuale(0, 950) + "px";
+			newDiv.style.top = generanumeroCasuale(0, 480) + "px";
+			newDiv.style.padding = "10px";
+			document.getElementById("main").appendChild(newDiv);
+		}
+
+		function disegnaCerchio(massimo, minimo) {
+
+			var newDiv = document.createElement("div");
+			var radius = generanumeroCasuale(minimo, massimo);
+			newDiv.style.width = radius + "px";
+			newDiv.style.height = radius + "px";
+			
+			// genera colore
+
+			newDiv.style.background = generaColore();
+
+			// genera colore
+
+			newDiv.style.color = generaColore();
+			newDiv.style.borderRadius = "50%";
+			newDiv.style.position = "absolute";
+			newDiv.style.left = Math.round(Math.random() * (950 - 0) + 0) + "px";
+			newDiv.style.top = Math.round(Math.random() * (480 - 0) + 0) + "px";
+			newDiv.style.padding = "10px";
+			document.getElementById("main").appendChild(newDiv);
+		}
+
+		function disegna() {
+
+			for (var i = 0; i < 20; i++) {
+
+				var min = 0;
+
+				var max = 200;
+
+				for(var y=0; y<3; y++) {
+
+					// disegna rettangolo
+
+					disegnaRettangolo(max, min);
+				}
+
+				// disegna quadrato
+
+				disegnaQuadrato(max, min);
+
+				for(var y=0; y<2; y++) {
+
+					// disegna cerchio
+
+					disegnaCerchio(max, min);
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>
