@@ -19,6 +19,10 @@ var PrintInConsole_3 = (text) => {
 
 PrintInConsole_3('Anonymus function with flat arrow saved in variable');
 
+(function(text) {
+	console.log(text);
+})('Anonymus function immediatly invoked');
+
 ((text) => {
 	console.log(text);
 })('Anonymus function with flat arrow immediatly invoked');
