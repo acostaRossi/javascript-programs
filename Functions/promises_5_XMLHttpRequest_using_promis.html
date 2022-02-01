@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>JavaScript Promise</h2>
+
+    <p id="demo"></p>
+
+    <img src="" id="image">
+
+    <script>
+        let myDisplayer = (some) => {
+
+            document.getElementById("demo").innerHTML = some;
+
+            document.getElementById("image").src = JSON.parse(some).message;
+        }
+
+        let promise = new Promise(function(myResolve, myReject) {
+
+            let url = 'https://dog.ceo/api/breeds/image/random';
+
+            let req = new XMLHttpRequest();
+
+            req.open('GET', url);
+            
+            req.onload = function() {
+                
+                if (req.status == 200) {
+                    myResolve(req.response);
+                } else {
+                    myReject("File not Found");
+                }
+            };
+
+            req.send();
+        });
+
+        promise.then(
+            (value) => {
+                myDisplayer(value);
+            },
+            (error) => {
+                myDisplayer(error);
+            }
+        );
+
+    </script>
+    
+</body>
+</html>

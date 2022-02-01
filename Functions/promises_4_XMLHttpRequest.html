@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>JavaScript Callbacks</h2>
+
+    <p id="demo"></p>
+
+    <img src="" id="image">
+
+    <script>
+        function myDisplayer(some) {
+            document.getElementById("demo").innerHTML = some;
+
+            document.getElementById("image").src = JSON.parse(some).message;
+        }
+
+        function getFile(myCallback) {
+
+            let url = 'https://dog.ceo/api/breeds/image/random';
+
+            let req = new XMLHttpRequest();
+
+            req.open('GET', url);
+
+            req.onload = function() {
+                if (req.status == 200) {
+                    myCallback(this.responseText);
+                } else {
+                    myCallback("Error: " + req.status);
+                }
+            }
+            req.send();
+        }
+
+        getFile(myDisplayer); 
+    </script>
+    
+</body>
+</html>
