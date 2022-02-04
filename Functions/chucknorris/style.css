@@ -1,0 +1,69 @@
+
+body {
+    background-color: #280000;
+    font-family: Verdana;
+    background-image: url(chuck-norris.jpeg);
+
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: #DE7C5A;
+    width: 600px;
+    min-height: 400px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+#select-category {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+#jokes-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 400px;
+    min-height: 300px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.joke-container {
+    margin-top: 20px;
+    min-height: 130px;
+    background-color: #f1d5a0;
+    padding: 5px;
+}
+
+.joke-category {
+    margin: 20px;
+}
+
+.joke-icon {
+    margin: 20px;
+}
+
+.joke-value {
+    margin: 20px;
+}
+
+#loader {
+    background-color: #a65ba7;
+    height: 100%;
+    width: 100%;
+    min-height: 600px;
+    text-align: center;
+    padding-top: 130px;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 200;
+    display: none;
+    top: 0px;
+    left: 0px;
+    font-size: 34px;
+}

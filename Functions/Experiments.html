@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin: auto;
+            width: 500px;
+            text-align: center;
+        }
+        .btn {
+            background: #7fff00;
+            font-family: Verdana;
+            font-size: 20px;
+            display: inherit;
+            width: 400px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="par"></p>
+
+    <div class="container">
+
+        <input class="btn" type="button" onclick="fnWithoutAsync()" value="fnWithoutAsync()">
+
+        <input class="btn" type="button" onclick="fnWithAsync()" value="fnWithAsync()">
+
+        <input class="btn" type="button" onclick="fnWithPromise()" value="fnWithPromise()">
+
+        <input class="btn" type="button" onclick="fnWithTimeoutWithCallback()" value="fnWithTimeoutWithCallback()">
+
+        <input class="btn" type="button" onclick="fnWithTimeoutWithPromise()" value="fnWithTimeoutWithPromise()">
+
+    </div>
+
+    <script>
+
+        // funzione che ritorna un numero casuale tra 0 e max
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        // Senza async la function non ritorna automaticamente una Promise
+
+        let fnWithoutAsync = () => {
+
+            function printMsgWithoutAsync (msg) {
+
+                console.log(msg);
+
+                let n = getRandomInt(100);
+
+                if(n % 2 == 0) {
+                    return Promise.resolve(n);
+                }
+
+                return Promise.reject('E\' avvenuto un errore :( :( :(');
+            };
+
+            printMsgWithoutAsync("printMsgWithoutAsync")
+                .then(result => console.log('Il numero vale: ' + result))
+                .catch(error => console.log('Errore intercettato: ' + error))
+                .finally(() => console.log('Finally'));
+        }
+
+        // Con async la function ritorna automaticamente una Promise
+
+        let fnWithAsync = () => {
+
+            async function printMsgWithAsync (msg) {
+
+                console.log(msg);
+
+                let n = getRandomInt(100);
+
+                if(n % 2 == 0) {
+                    return n;
+                }
+
+                throw("E' avvenuto un errore :( :( :(");
+            };
+
+            printMsgWithAsync("printMsgWithAsync")
+                .then(result => console.log('Il numero vale: ' + result))
+                .catch(error => console.log('Errore intercettato: ' + error))
+                .finally(() => console.log('Finally'));
+        }
+
+        // ritornare una promise senza async
+
+        let fnWithPromise = () => {
+
+            function printMsgWithPromise (msg) {
+
+                return new Promise((resolve, reject) => {
+
+                    console.log(msg);
+
+                    let n = getRandomInt(100);
+
+                    if(n % 2 == 0) {
+                        resolve(n);
+                    }
+
+                    reject("E' avvenuto un errore :( :( :(");
+                });
+            }
+
+            printMsgWithPromise("printMsgWithPromise")
+                .then(result => console.log('Il numero vale: ' + result))
+                .catch(error => console.log('Errore intercettato: ' + error))
+                .finally(() => console.log('Finally'));
+        }
+
+        let fnWithTimeoutWithCallback = () => {
+
+            function printMsgWithTimeoutWithCallback (msg, callback) {
+
+                console.log(msg);
+
+                console.log('Attendo 1500 millisecondi ...');
+
+                setTimeout(() => {
+
+                    let n = getRandomInt(100);
+
+                    if(n % 2 == 0) {
+                        callback(n);
+                        return;
+                    }
+                    
+                    throw("E' avvenuto un errore :( :( :(");
+
+                }, 1500);
+            };
+
+            try {
+                printMsgWithTimeoutWithCallback("printMsgWithTimeoutWithCallback", (n) => console.log('Il numero vale: ' + n));
+            } catch (error) {
+                console.log('Errore intercettato: ' + error);
+            } finally {
+                console.log('Finally')
+            }
+        }
+
+        let fnWithTimeoutWithPromise = async () => {
+
+            async function printMsgWithTimeoutWithPromise (msg) {
+
+                console.log(msg);
+
+                console.log('Attendo 1500 millisecondi ...');
+
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+
+                        let n = getRandomInt(100);
+
+                        if(n % 2 == 0) {
+                            resolve(n);
+                        }
+
+                        reject('E\' avvenuto un errore :( :( :(');
+
+                    }, 1500);
+                });
+            };
+
+            try {
+                let result = await printMsgWithTimeoutWithPromise("printMsgWithTimeoutWithPromise");
+                console.log('Il numero vale: ' + result);
+            } catch (error) {
+                console.log('Errore intercettato: ' + error);
+            } finally {
+                console.log('Finally');
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>

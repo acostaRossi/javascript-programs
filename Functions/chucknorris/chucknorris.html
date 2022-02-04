@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader">Loading ...</div>
+
+    <div class="container">
+
+        <select id="select-category">
+            <option></option>
+        </select>
+
+        <div id="jokes-container"></div>
+
+    </div>
+
+    <script>
+
+        (() => {
+
+            let getJoke = (category) => {
+
+                showLoader();
+
+                disableSelection();
+
+                let url = 'https://api.chucknorris.io/jokes/random?category=' + category;
+
+                fetch(url)
+                    .then(
+                        resp => resp.json(),
+                        error => {
+                            window.alert('E\' avvenuto un errore');
+                        }
+                    )
+                    .finally(() => {
+                        hideLoader();
+                        enableSelection();
+                    })
+                    .then(joke => {
+                        writeJoke(joke);
+                    });
+            };
+
+            let writeJoke = (joke) => {
+
+                let html =  `<div class="joke-container">
+                                <div class="joke-category">${joke.categories[0]}</div>
+                                <div class="joke-icon">
+                                    <img src="${joke.icon_url}">
+                                </div>
+                                <div class="joke-value">${joke.value}</div>
+                            </div>`;
+
+                html = html + document.getElementById('jokes-container').innerHTML;
+                
+                document.getElementById('jokes-container').innerHTML = html;
+                
+                /*
+                let created_at = joke.created_at; // "2020-01-05 13:42:19.576875"
+                let icon_url = joke.icon_url; // "https://assets.chucknorris.host/img/avatar/chuck-norris.png"
+                let id: "9ovbd5b1t66_x92jwrq1yq"
+                updated_at: "2020-01-05 13:42:19.576875"
+                url: "https://api.chucknorris.io/jokes/9ovbd5b1t66_x92jwrq1yq"
+                value: "Chuck Norris once rode a bull, and nine months later it had a calf."
+                */
+            };
+            
+            let writeCategoriesOptions = (categories) => {
+
+                for (let i = 0; i < categories.length; i++) {
+
+                    const category = categories[i];
+
+                    const html = '<option>' + category  + '</option>';
+
+                    document.getElementById('select-category').innerHTML += html;
+                    
+                }
+            }
+            
+            let getCategories = () => {
+
+                disableSelection();
+
+                let url = 'https://api.chucknorris.io/jokes/categories';
+
+                fetch(url)
+                    .then(resp => resp.json())
+                    .then(categories => {
+                        
+                        writeCategoriesOptions(categories);
+
+                        enableSelection();
+                    });
+            };
+
+            let attachSelectCategoryEventListener = () => {
+
+                document.getElementById('select-category').addEventListener('change', () => {
+
+                    let el = document.getElementById('select-category');
+
+                    let category = el.options[el.selectedIndex].text;
+
+                    getJoke(category);
+                });
+            };
+
+            let showLoader = () => {
+                document.getElementById('loader').style.display = 'block';
+            };
+
+            let hideLoader = () => {
+                document.getElementById('loader').style.display = 'none';
+            };
+
+            let disableSelection = () => {
+                document.getElementById('select-category').disabled = true;
+            };
+
+            let enableSelection = () => {
+                document.getElementById('select-category').disabled = false;
+            };
+
+            let startApp = () => {
+
+                getCategories();
+
+                attachSelectCategoryEventListener();
+            };
+
+            startApp();
+        })();
+    </script>
+    
+</body>
+</html>

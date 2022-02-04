@@ -43,14 +43,24 @@
         });
 
         promise.then(
-            (value) => {
+            (value) => { return new Promise((resolve) => {
                 myDisplayer(value);
+                resolve();
+            })},
+            (error) => { myDisplayer(error); }
+        ).then(
+            (value) => {
+                return Promise.race([promise]).then((value) => {
+                    console.log(value);
+                });
             },
-            (error) => {
-                myDisplayer(error);
-            }
-        );
-
+        ).then(
+            (value) => {
+                
+                    console.log(value);
+                
+            },
+        )
     </script>
     
 </body>

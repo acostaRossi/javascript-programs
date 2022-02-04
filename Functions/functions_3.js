@@ -4,7 +4,7 @@
 		callback();
 	}
 
-	fnWithCallback(()=> {
+	fnWithCallback(() => {
 		console.log('callback 1 executed');
 	});
 

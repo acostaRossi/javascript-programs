@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+    <style>
+        p {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>JavaScript Promise</h2>
+
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(some) {
+
+            return new Promise((resolve, reject) => {
+
+                document.getElementById("demo").innerHTML += `<p>${some}</p>`;
+
+                resolve(true);
+            });
+        }
+
+        let myPromise = () => {
+
+            return new Promise(function(resolve, reject) {
+
+                myDisplayer('waiting ...');
+
+                setTimeout(() => {
+
+                        let emoticons = '😍🤑😇';
+
+                        let n = Math.floor(Math.random() * emoticons.length);
+
+                        if(n % 2 == 0) {
+
+                            let emoji = emoticons.charAt(n) + emoticons.charAt(n + 1);
+                            
+                            resolve(emoji);
+                        }
+
+                        reject('☠ error');
+                }, 1500);
+            });
+        }
+
+        myPromise()
+            .then((value) => { myDisplayer(value); })
+            .catch((value) => { myDisplayer(value); })
+
+            .then((value) => myPromise())
+            .then((value) => { myDisplayer(value); })
+            .catch((value) => { myDisplayer(value); })
+            
+            .then((value) => myPromise())
+            .then((value) => { myDisplayer(value); })
+            .catch((value) => { myDisplayer(value); })
+    </script>
+</body>
+</html>

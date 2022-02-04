@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <select id="select-breed">
+            <option value=""></option>
+        </select>
+
+        <div id="breed-container">
+
+        </div>
+
+    </div>
+
+    <script>
+        (() => {
+
+            let writeBreedsOptions = (breeds) => {
+
+                for (const [key, value] of Object.entries(breeds)) {
+
+                    let html = `<option>${key}</option>`;
+
+                    document.getElementById('select-breed').innerHTML += html;
+                }
+            }
+
+            let getBreeds = (breeds) => {
+
+                let xmlReq = new XMLHttpRequest();
+
+                xmlReq.addEventListener('load', () => {
+
+                    let textResponse = xmlReq.responseText;
+
+                    let breeds = JSON.parse(textResponse).message;
+
+                    writeBreedsOptions(breeds);
+                });
+
+                let apiUrl = 'https://dog.ceo/api/breeds/list/all';
+
+                xmlReq.open('GET', apiUrl);
+
+                xmlReq.send();
+            }
+
+            let getBreedImages = (breed) => {
+
+                let apiUrl = `https://dog.ceo/api/breed/${breed}/images`;
+
+                let xmlReq = new XMLHttpRequest();
+
+                xmlReq.addEventListener('load', () => {
+
+                    document.getElementById('breed-container').innerHTML = '';
+
+                    let textResponse = xmlReq.responseText;
+
+                    let images = JSON.parse(textResponse).message;
+
+                    let counter = 0;
+                    
+                    for (let index = 0; index < images.length; index++) {
+
+                        if(counter == 10) break;
+                        
+                        const element = images[index];
+
+                        let html = `<img src="${element}">`;
+
+                        document.getElementById('breed-container').innerHTML += html;
+
+                        counter++;
+                    }
+                });
+
+                xmlReq.open('GET', apiUrl);
+
+                xmlReq.send();
+            }
+
+            let attachSelectBreedEventListener = () => {
+
+                document.getElementById('select-breed').addEventListener('change', () => {
+
+                    let el = document.getElementById('select-breed');
+
+                    let breed = el.options[el.selectedIndex].text;
+
+                    getBreedImages(breed);
+                });
+            };
+
+            let startApp = () => {
+
+                getBreeds();
+
+                attachSelectBreedEventListener();
+            };
+            
+            startApp();
+        })();
+    </script>
+    
+</body>
+</html>
