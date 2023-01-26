@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Dotti</title>
+        <script src="./Tpsit.js"></script>
+    </head>
+    <body>
+        <form>
+        <h1>RICCARDO DOTTI: CALCOLATORE CRC</h1><br>
+        <label>Scegli la modalita' di utilizzo</label><br>
+        <input type="radio" name="Modalita'" id="PulsanteCalcola" value="C">Calcola</button> <br>
+        <input type="radio" name="Modalita'" id="PulsanteControlla" value="NC">Controlla</button> <br> <br>
+        <label>Dimmi il numero di partenza</label><br>
+        <input type="text" id="NumeroPartenza" value=""></input><br><br>
+        <label>Dammi il polinomio generatore gia' convertito</label><br>
+        <input type="text" id="Divisore" value=""></input><br><br>
+        <button type="button" onclick="CalcolaInput()">Calcola</button><br><br><br><br>
+        <label id="TxtResto">Il resto della divisione usando lo XOR fra il numero di partenza e il polinomio generatore e' </label>
+        <p id="resto"></p>
+        <label id="TxtStringa">La stringa di numeri da accodare al numero di partenza prima della trasmissione e' </label>
+        <p id="risultato"></p>
+        </form>
+
+        <script>
+            document.getElementById("TxtResto").style.display = "none";
+            document.getElementById("resto").style.display = "none";
+            document.getElementById("TxtStringa").style.display = "none";
+            document.getElementById("risultato").style.display = "none";
+        </script>
+    </body>
+</html>
