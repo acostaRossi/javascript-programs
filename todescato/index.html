@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calcolatore codifica di Hamming</title>
+		<script src="Hamming.js"></script>
+	</head>
+	
+	<body>
+		<h1 id="out1"></h1>
+		<h1 id="out2"></h1>
+		
+		<script>
+			let data = prompt("Inserisci il codice da codificare:");
+			let code = prompt("Inserisci il codice da decodificare:");
+			data = data.split("");
+			code = code.split("");
+			
+			for(let i=0; i<4; i++)
+				data[i] = parseInt(data[i]);
+			
+			for(let i=0; i<7; i++)
+				code[i] = parseInt(code[i]);
+			
+			document.getElementById("out1").innerHTML = "Dato codificato: " 	+ 	codifica(data);
+			document.getElementById("out2").innerHTML = "Codice decodificato: " + 	decodifica(code);
+		</script>
+	</body>
+</html>
